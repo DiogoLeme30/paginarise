@@ -1,5 +1,0 @@
-test-results/
-node_modules/
-.env
-.env.local
-**/.git-inner-backup/
