@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rise Social - Arsenal para Página Dark</title>
+  <script>
+    (function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = true;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = true;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+    (function () {
+      const pixelId = "1218837936475239";
+      const endpoint = "/api/meta-conversions";
+      const getEventId = (eventName) => {
+        const suffix = window.crypto && window.crypto.randomUUID
+          ? window.crypto.randomUUID()
+          : Math.random().toString(36).slice(2);
+        return `${eventName}.${Date.now()}.${suffix}`;
+      };
+      const sendServerEvent = (eventName, eventId, customData = {}) => {
+        const payload = JSON.stringify({
+          event_name: eventName,
+          event_id: eventId,
+          event_source_url: window.location.href,
+          custom_data: customData,
+        });
+
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(endpoint, new Blob([payload], { type: "application/json" }));
+          return;
+        }
+
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: payload,
+          keepalive: true,
+        }).catch(function () {});
+      };
+
+      window.riseMeta = {
+        track(eventName, customData) {
+          const eventId = getEventId(eventName);
+          window.fbq("track", eventName, customData || {}, { eventID: eventId });
+          sendServerEvent(eventName, eventId, customData || {});
+        },
+      };
+
+      window.fbq("init", pixelId);
+      window.riseMeta.track("PageView");
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1218837936475239&ev=PageView&noscript=1" alt="">
+  </noscript>
+  <main class="page">
+    <section class="hero02-stage" aria-label="Página inicial">
+      <div id="hero02-scene" class="hero02-scene" aria-hidden="true"></div>
+      <div class="hero02-copy">
+        <p class="hero02-kicker">Rise Social</p>
+        <h1 class="hero02-title">
+          <span>Crie sua</span>
+          <span>página Dark</span>
+        </h1>
+        <p class="hero02-subtitle">
+          Acesse recursos, aulas e ferramentas para criar, desenvolver e monetizar uma página Dark mesmo começando sem aparecer e sem montar tudo do zero.
+        </p>
+        <div class="hero02-actions">
+          <a class="hero02-button" href="#oferta">Quero acessar o Rise</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="audience" aria-labelledby="audience-title">
+      <div class="audience__card">
+        <div class="audience__heading">
+          <h2 class="audience__title" id="audience-title">Você quer começar uma página Dark, mas ainda não tem estrutura para transformar conteúdo em monetização.</h2>
+        </div>
+
+        <div class="audience__grid">
+          <article class="audience__item">
+            <span class="audience__number">01</span>
+            <p class="audience__label">Você não sabe qual nicho escolher, como estruturar a página e que tipo de conteúdo publicar.</p>
+          </article>
+          <article class="audience__item">
+            <span class="audience__number">02</span>
+            <p class="audience__label">Você perde horas procurando cortes, imagens, trilhas, efeitos e elementos para montar vídeos com aparência profissional.</p>
+          </article>
+          <article class="audience__item">
+            <span class="audience__number">03</span>
+            <p class="audience__label">Você até entende que página Dark pode vender, mas não sabe como criar uma operação consistente.</p>
+          </article>
+          <article class="audience__item">
+            <span class="audience__number">04</span>
+            <p class="audience__label">Você sente falta de aulas, recursos e direção para sair do zero e criar uma página com potencial de monetização.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase" aria-labelledby="showcase-title">
+      <div class="showcase__inner">
+        <article class="showcase__feature">
+          <div class="showcase__feature-logo" aria-hidden="true">
+            <img src="../fotos/Design sem nome (13)-Photoroom.png" alt="">
+          </div>
+          <div class="showcase__feature-copy">
+            <h2 class="showcase__feature-title">Foi para acelerar sua página Dark que nasceu o Rise.</h2>
+            <p class="showcase__feature-text">
+              Uma plataforma para quem quer criar conteúdo sem aparecer, organizar a produção e desenvolver uma página pronta para gerar oportunidades.
+            </p>
+          </div>
+        </article>
+
+        <div class="showcase__content">
+          <div class="showcase__heading">
+            <p class="showcase__kicker">A solução</p>
+            <h2 class="showcase__title" id="showcase-title">Tudo que você precisa para criar, crescer e monetizar uma página Dark <span>reunido em um só lugar.</span></h2>
+          </div>
+
+          <div class="showcase__cards">
+            <article class="showcase__card">
+              <span class="showcase__card-number">01</span>
+              <h3 class="showcase__card-title">Conteúdo sem começar do zero</h3>
+              <p class="showcase__card-text">Packs de cortes, imagens, efeitos sonoros, trilhas, overlays e LUTs para montar vídeos com mais velocidade.</p>
+            </article>
+            <article class="showcase__card">
+              <span class="showcase__card-number">02</span>
+              <h3 class="showcase__card-title">Criação e operação</h3>
+              <p class="showcase__card-text">Aulas de edição, thumbnails, organização, prospecção, vendas e automação para estruturar a página.</p>
+            </article>
+            <article class="showcase__card">
+              <span class="showcase__card-number">03</span>
+              <h3 class="showcase__card-title">Monetização com direção</h3>
+              <p class="showcase__card-text">Estratégias e ferramentas para transformar alcance, conteúdo e audiência em oportunidades de venda.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-labelledby="benefits-title">
+      <div class="benefits__inner">
+        <div class="benefits__heading">
+          <h2 class="benefits__title" id="benefits-title">O que você recebe para construir sua página Dark.</h2>
+        </div>
+
+        <div class="benefits__timeline" aria-label="Principais entregas">
+          <article class="benefits__item">
+            <span class="benefits__dot" aria-hidden="true"></span>
+            <p class="benefits__text">Packs de cortes, vídeos e imagens para criar posts e vídeos sem começar do zero.</p>
+          </article>
+          <article class="benefits__item">
+            <span class="benefits__dot" aria-hidden="true"></span>
+            <p class="benefits__text">Mais de 500 efeitos sonoros e mais de 200 trilhas para aumentar retenção e ritmo.</p>
+          </article>
+          <article class="benefits__item">
+            <span class="benefits__dot" aria-hidden="true"></span>
+            <p class="benefits__text">Mais de 50 LUTs para tratamento de cor com aparência profissional.</p>
+          </article>
+          <article class="benefits__item">
+            <span class="benefits__dot" aria-hidden="true"></span>
+            <p class="benefits__text">Aulas de Premiere, Photoshop, prospecção, vendas e automação para operar melhor.</p>
+          </article>
+          <article class="benefits__item">
+            <span class="benefits__dot" aria-hidden="true"></span>
+            <p class="benefits__text">Template no Notion, banco de IAs e estratégias para criar, organizar e monetizar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="method-stack" id="metodo" aria-label="Arsenal completo">
+      <div class="method-entry-spacer" aria-hidden="true"></div>
+
+      <div class="method-hero">
+        <h2 class="method-hero__title" id="method-title">Arsenal<br>completo</h2>
+      </div>
+
+      <div class="team-scroll" data-effect="method-steps-stack" aria-labelledby="method-title">
+        <div class="team-content">
+          <div class="team-cards" role="list" aria-label="Recursos incluidos no Rise">
+            <article class="team-card is-active" role="listitem">
+              <div class="team-card-scene" style="background-image: url('../fotos/capcut.jpg')">
+                <img class="team-card-image" src="../fotos/capcut.jpg" alt="Interface e recursos do CapCut para edicao de videos">
+              </div>
+            </article>
+            <article class="team-card" role="listitem">
+              <div class="team-card-scene" style="background-image: url('../fotos/cortes.jpg')">
+                <img class="team-card-image" src="../fotos/cortes.jpg" alt="Pack de cortes prontos para conteudos de pagina Dark">
+              </div>
+            </article>
+            <article class="team-card" role="listitem">
+              <div class="team-card-scene" style="background-image: url('../fotos/imagens.jpg')">
+                <img class="team-card-image" src="../fotos/imagens.jpg" alt="Banco de imagens para composicoes e posts">
+              </div>
+            </article>
+            <article class="team-card" role="listitem">
+              <div class="team-card-scene" style="background-image: url('../fotos/luts.jpg')">
+                <img class="team-card-image" src="../fotos/luts.jpg" alt="LUTs para tratamento de cor em videos">
+              </div>
+            </article>
+            <article class="team-card" role="listitem">
+              <div class="team-card-scene" style="background-image: url('../fotos/overlay.jpg')">
+                <img class="team-card-image" src="../fotos/overlay.jpg" alt="Overlays e elementos visuais para videos">
+              </div>
+            </article>
+            <article class="team-card" role="listitem">
+              <div class="team-card-scene" style="background-image: url('../fotos/photoshop.jpg')">
+                <img class="team-card-image" src="../fotos/photoshop.jpg" alt="Modulo de Photoshop para thumbnails e criativos">
+              </div>
+            </article>
+            <article class="team-card" role="listitem">
+              <div class="team-card-scene" style="background-image: url('../fotos/sdx.jpg')">
+                <img class="team-card-image" src="../fotos/sdx.jpg" alt="Modulo de efeitos sonoros para videos de pagina Dark">
+              </div>
+            </article>
+            <article class="team-card" role="listitem">
+              <div class="team-card-scene" style="background-image: url('../fotos/template.jpg')">
+                <img class="team-card-image" src="../fotos/template.jpg" alt="Template de organizacao para producao de conteudo">
+              </div>
+            </article>
+            <article class="team-card" role="listitem">
+              <div class="team-card-scene" style="background-image: url('../fotos/trilhas.jpg')">
+                <img class="team-card-image" src="../fotos/trilhas.jpg" alt="Trilhas sonoras para videos de pagina Dark">
+              </div>
+            </article>
+          </div>
+
+          <div class="team-info">
+            <p class="team-description is-active">Aulas e orientacoes para editar videos curtos com agilidade, cortes limpos e acabamento pronto para publicar.</p>
+            <p class="team-description">Biblioteca de cortes para transformar referencias e momentos fortes em videos rapidos para alimentar a pagina.</p>
+            <p class="team-description">Arquivos visuais para thumbnails, posts e composicoes que deixam o conteudo mais forte e consistente.</p>
+            <p class="team-description">Presets de cor para padronizar o visual dos videos e criar uma estetica mais profissional em poucos cliques.</p>
+            <p class="team-description">Camadas visuais para dar textura, movimento e profundidade aos videos sem precisar criar tudo manualmente.</p>
+            <p class="team-description">Direcionamento para montar thumbnails, artes e criativos com leitura clara, contraste e aparencia de pagina grande.</p>
+            <p class="team-description">Efeitos sonoros para destacar cortes, transicoes e momentos importantes, deixando os videos mais dinamicos e envolventes.</p>
+            <p class="team-description">Modelo de organizacao para planejar ideias, separar materiais e acompanhar a producao com mais clareza.</p>
+            <p class="team-description">Musicas e atmosferas sonoras para sustentar ritmo, emocao e retencao nos videos publicados pela pagina.</p>
+          </div>
+
+          <div class="team-counter" aria-hidden="true">
+            <span class="team-counter-value">01</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="method-flow-spacer" aria-hidden="true"></div>
+    </section>
+
+    <section class="persuasion-reveal" data-effect="blur-lines-reveal" aria-labelledby="persuasion-title">
+      <div class="persuasion-reveal__inner">
+        <p class="persuasion-reveal__kicker">Por que entrar agora</p>
+        <h2 class="persuasion-reveal__title" id="persuasion-title">
+          <span class="persuasion-reveal__line">O Rise não é só um pack de arquivos.</span>
+          <span class="persuasion-reveal__line">É a estrutura que tira sua página Dark do improviso.</span>
+          <span class="persuasion-reveal__line">Você ganha materiais prontos, aulas e organização para publicar com velocidade,</span>
+          <span class="persuasion-reveal__line">criar uma identidade mais profissional e parar de perder horas montando tudo do zero.</span>
+          <span class="persuasion-reveal__line">Enquanto muita gente ainda está procurando recurso por recurso,</span>
+          <span class="persuasion-reveal__line">você já pode estar produzindo, testando, crescendo e abrindo caminho para monetizar.</span>
+        </h2>
+      </div>
+    </section>
+
+    <section class="testimonials" aria-labelledby="testimonials-title">
+      <div class="testimonials__inner">
+        <div class="testimonials__heading">
+          <h2 class="testimonials__title" id="testimonials-title">Criadores que usaram o Rise <span>para acelerar páginas, canais e conteúdos Dark.</span></h2>
+        </div>
+
+        <div class="testimonials__grid">
+          <article class="testimonial-card">
+            <p class="testimonial-card__text">
+              "Sem dúvidas me poupou muito tempo de trabalho, só pelos packs de efeitos sonoros e overlays já vale muito a pena. Uso diariamente."
+            </p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar" aria-hidden="true">D</span>
+              <div class="testimonial-card__meta">
+                <p class="testimonial-card__name">Diego Leme</p>
+                <p class="testimonial-card__role">Filmmaker & Editor</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <p class="testimonial-card__text">
+              "O melhor acervo que encontrei pra otimizar meu trabalho no Instagram. Minhas métricas de retenção triplicaram desde que comecei a usar os cortes dinâmicos."
+            </p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar" aria-hidden="true">T</span>
+              <div class="testimonial-card__meta">
+                <p class="testimonial-card__name">Thiago Carvalho</p>
+                <p class="testimonial-card__role">Criador de Conteúdo</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <p class="testimonial-card__text">
+              "Comecei no mundo das páginas Dark, e a Rise tá me ajudando muito. Os packs de cortes são absurdos de completos e o curso de Photoshop salvou minhas thumbnails."
+            </p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar" aria-hidden="true">L</span>
+              <div class="testimonial-card__meta">
+                <p class="testimonial-card__name">Leonardo Neves</p>
+                <p class="testimonial-card__role">Canal Dark</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <p class="testimonial-card__text">
+              "A qualidade dos LUTs é surreal. Antes eu demorava horas no color grading, agora com 1 clique o vídeo já fica com cara de cinema profissional."
+            </p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar" aria-hidden="true">C</span>
+              <div class="testimonial-card__meta">
+                <p class="testimonial-card__name">Camila Santos</p>
+                <p class="testimonial-card__role">Social Media</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <p class="testimonial-card__text">
+              "O template do Notion mudou meu fluxo de trabalho. Consigo organizar todos os roteiros, referências e datas de postagem num lugar só."
+            </p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar" aria-hidden="true">R</span>
+              <div class="testimonial-card__meta">
+                <p class="testimonial-card__name">Rafael Moraes</p>
+                <p class="testimonial-card__role">Diretor de Arte</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <p class="testimonial-card__text">
+              "As trilhas sonoras não têm copyright, o que me dá uma paz enorme pra monetizar. A edição fica muito mais imersiva e profissional."
+            </p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar" aria-hidden="true">J</span>
+              <div class="testimonial-card__meta">
+                <p class="testimonial-card__name">Juliana Costa</p>
+                <p class="testimonial-card__role">Youtuber</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="offer-cta" id="oferta" aria-labelledby="offer-cta-title">
+      <div class="offer-cta__inner">
+        <div class="offer-cta__heading">
+          <p class="offer-cta__kicker">Oferta de lançamento</p>
+          <h2 class="offer-cta__title" id="offer-cta-title">Desbloqueie o arsenal para criar sua página Dark.</h2>
+          <p class="offer-cta__subtitle">Biblioteca de recursos, aulas práticas, templates, estratégias e ferramentas para criar conteúdo, desenvolver audiência e monetizar sua página.</p>
+        </div>
+
+        <article class="offer-card">
+          <div class="offer-card__glow" aria-hidden="true"></div>
+          <div class="offer-card__content">
+            <div class="offer-card__price">
+              <span class="offer-card__old-price">R$ 198,00</span>
+              <div class="offer-card__current-price" aria-label="R$ 34,90">
+                <span>R$</span>
+                <strong>34,90</strong>
+              </div>
+              <span class="offer-card__badge">Acesso Vitalício</span>
+            </div>
+
+            <p class="offer-card__text">
+              <strong>O arsenal completo</strong> para criar e monetizar uma <strong>página Dark</strong>.
+              <span>Pagamento único e seguro.</span>
+            </p>
+
+            <div class="offer-card__features" aria-label="Condições da oferta">
+              <span>Acesso imediato</span>
+              <span>Garantia de 7 dias</span>
+              <span>Checkout Cakto</span>
+            </div>
+
+            <a class="offer-card__button" id="contato" href="https://pay.cakto.com.br/nwfpaed_375760" target="_blank" rel="noopener noreferrer">
+              Quero criar minha página Dark
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="faq-title">
+      <div class="faq-section__inner">
+        <div class="faq-section__heading">
+          <p class="faq-section__kicker">Perguntas Frequentes</p>
+          <h2 class="faq-section__title" id="faq-title">Tudo que você precisa saber antes de criar sua página Dark com o Rise.</h2>
+        </div>
+
+        <div class="faq-section__list">
+          <article class="faq-item is-open">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="true">
+                <span>Por que eu deveria comprar o Rise para criar uma página Dark?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Porque o Rise reúne recursos, aulas e ferramentas para acelerar a criação de uma página Dark, desde a produção de conteúdo até a organização da operação.</p>
+                <p>Em vez de perder horas procurando arquivos, músicas, efeitos, imagens e materiais espalhados pela internet, você terá uma biblioteca organizada para criar conteúdos com mais velocidade e profissionalismo.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>O acesso ao Rise é vitalício?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Sim. Ao adquirir o Rise, você recebe acesso vitalício à plataforma e aos conteúdos disponíveis, sem precisar pagar mensalidades.</p>
+                <p>Você poderá acessar os materiais sempre que precisar e também receberá as futuras atualizações adicionadas ao produto.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>O Rise é indicado para quem está começando do zero?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Sim. O Rise foi desenvolvido tanto para quem quer começar uma página Dark quanto para quem já cria conteúdo e quer ganhar velocidade.</p>
+                <p>Além dos recursos prontos, você terá acesso a aulas e materiais que ajudam a editar, organizar a produção e entender caminhos de prospecção, vendas e automação.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>O que está incluído para criar e monetizar uma página Dark?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Dentro do Rise, você encontrará:</p>
+                <ul>
+                  <li>Pack de Cortes e Vídeos;</li>
+                  <li>Pack de Imagens;</li>
+                  <li>Mais de 500 efeitos sonoros;</li>
+                  <li>Mais de 200 músicas e trilhas sonoras;</li>
+                  <li>Mais de 50 LUTs para tratamento de cores;</li>
+                  <li>Overlays, texturas e elementos visuais;</li>
+                  <li>Aulas de Adobe Premiere e Photoshop;</li>
+                  <li>Template de organização no Notion;</li>
+                  <li>Módulo de Prospecção de Clientes;</li>
+                  <li>Módulo de Vendas e Automação;</li>
+                  <li>Banco de Inteligências Artificiais;</li>
+                  <li>Conteúdos e estratégias para criação, crescimento e monetização nas redes sociais.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>Como receberei o acesso após a compra?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Após a confirmação do pagamento, os dados de acesso serão enviados para o e-mail utilizado durante a compra.</p>
+                <p>Por isso, é importante conferir se o endereço de e-mail foi preenchido corretamente no momento do pagamento.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>Posso acessar pelo celular?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Sim. A plataforma pode ser acessada pelo celular, computador ou tablet.</p>
+                <p>Entretanto, para baixar, organizar e utilizar os arquivos de edição, recomendamos o uso de um computador para uma melhor experiência.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>O Rise recebe novos conteúdos?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Sim. O conteúdo do Rise será constantemente atualizado.</p>
+                <p>Novos recursos, arquivos, módulos e aulas poderão ser adicionados à plataforma, tornando o produto cada vez mais completo para criação e desenvolvimento da sua página, sem nenhum custo adicional para quem já possui acesso.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>Tenho direito a reembolso?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Sim. Você possui um prazo de garantia de 7 dias corridos após a confirmação da compra.</p>
+                <p>Durante esse período, você poderá conhecer a plataforma e analisar os conteúdos disponíveis. Caso o produto não atenda às suas expectativas, poderá solicitar o reembolso dentro do prazo da garantia.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>Como solicitar o reembolso?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>A solicitação deve ser realizada através dos canais de suporte da Cakto ou pelo e-mail de suporte informado após a compra.</p>
+                <p>O pedido precisa ser feito dentro do prazo de 7 dias corridos. Após a aprovação, o valor será devolvido de acordo com o método de pagamento utilizado.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>Meus dados de pagamento estão seguros?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Sim. Todo o pagamento é processado pela Cakto, uma plataforma especializada em pagamentos digitais.</p>
+                <p>O Rise não possui acesso aos dados completos do seu cartão. As informações são processadas diretamente pelo sistema de pagamento.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>Terei suporte caso precise de ajuda?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Sim. Caso tenha alguma dificuldade para acessar a plataforma, baixar os materiais ou localizar os conteúdos, você poderá entrar em contato com o nosso suporte.</p>
+                <p>Nossa equipe estará disponível para orientar e ajudar na resolução do problema.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-item__title">
+              <button class="faq-item__button" type="button" aria-expanded="false">
+                <span>Preciso pagar alguma mensalidade?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-item__panel">
+              <div class="faq-item__content">
+                <p>Não. O pagamento é realizado apenas uma vez.</p>
+                <p>Após a compra, você terá acesso vitalício ao Rise, aos conteúdos disponíveis e às futuras atualizações incluídas na plataforma.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="guarantee-section" aria-labelledby="guarantee-title">
+      <div class="guarantee-section__inner">
+        <article class="guarantee-card">
+          <p class="guarantee-card__kicker">Garantia de 7 dias</p>
+          <h2 class="guarantee-card__title" id="guarantee-title">Acesse, explore e veja se faz sentido para sua página Dark.</h2>
+          <p class="guarantee-card__text">
+            Você tem 7 dias corridos após a compra para conhecer a plataforma e avaliar os conteúdos. Se entender que o Rise não é para você, basta solicitar o reembolso dentro do prazo da garantia.
+          </p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/js/hero02-studio.js"></script>
+  <script src="assets/js/hero02-scene-data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
